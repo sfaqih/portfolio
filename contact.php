@@ -1,4 +1,6 @@
 <?php 
+		// error_reporting(-1);
+		// ini_set('display_errors', 1);
 	/* ==========================  Define variables ========================== */
 
 	#Your e-mail address
@@ -29,7 +31,7 @@
 
 	//Check e-mail validation
 	function check_email($email){
-		if(!@eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email)){
+		if (!filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
 			return false;
 		} else {
 			return true;
@@ -40,7 +42,7 @@
 	if(isset($_POST['name']) and isset($_POST['mail']) and isset($_POST['comment'])){
 		$name 	 = $_POST['name'];
 		$mail 	 = $_POST['mail'];
-		$website  = $_POST['website'];
+		// $website  = $_POST['website'];
 		$comment = $_POST['comment'];
 
 		if($name == '') {
